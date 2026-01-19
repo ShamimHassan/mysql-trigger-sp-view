@@ -1,0 +1,137 @@
+MariaDB [(none)]> CREATE DATABASE company;
+Query OK, 1 row affected (0.002 sec)
+
+MariaDB [(none)]> USE company;
+Database changed
+MariaDB [company]> CREATE TABLE user (
+    ->     id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     username VARCHAR(20) NOT NULL,
+    ->     password VARCHAR(30) NOT NULL,
+    ->     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    ->     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    -> );
+Query OK, 0 rows affected (0.013 sec)
+
+MariaDB [company]> INSERT INTO `user` (`id`, `username`, `password`) VALUES (NULL, 'shamim', 'shamim'), (NULL, 'fahim', 'fahim');
+Query OK, 2 rows affected (0.004 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+MariaDB [company]> CREATE TABLE manufacturer (
+    ->     id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     name VARCHAR(50) NOT NULL,
+    ->     address VARCHAR(100) NOT NULL,
+    ->     contact VARCHAR(50) NOT NULL,
+    ->     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    ->     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    -> );
+Query OK, 0 rows affected (0.013 sec)
+
+MariaDB [company]> INSERT INTO `manufacturer` (`id`, `name`, `address`, `contact`) VALUES (NULL, 'bashundhara', 'dhaka', '01774500817'), (NULL, 'meghna', 'dhaka', '01774500818');
+Query OK, 2 rows affected (0.004 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+MariaDB [company]> INSERT INTO `manufacturer` (`id`, `name`, `address`, `contact`) VALUES (NULL, 'partex', 'dhaka', '01774500820'), (NULL, 'walton', 'dhaka', '01774500821');
+Query OK, 2 rows affected (0.002 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+MariaDB [company]> CREATE TABLE product (
+    ->     id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     name VARCHAR(100) NOT NULL,
+    ->     price DECIMAL(10,2) NOT NULL,
+    ->     mid INT(10) NOT NULL,
+    ->     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    ->     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP 
+    ->         ON UPDATE CURRENT_TIMESTAMP
+    -> );
+Query OK, 0 rows affected (0.017 sec)
+
+MariaDB [company]> INSERT INTO `product` (`id`, `name`, `price`, `mid`) VALUES (NULL, 'cement', '3000', '1'), (NULL, 'steel', '6000', '1');
+Query OK, 2 rows affected (0.004 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+MariaDB [company]> INSERT INTO `product` (`id`, `name`, `price`, `mid`) VALUES (NULL, 'cement', '8000', '2'), (NULL, 'beverages', '2000', '2');
+Query OK, 2 rows affected (0.002 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+MariaDB [company]> INSERT INTO `product` (`id`, `name`, `price`, `mid`) VALUES (NULL, 'sofa', '50000', '3'), (NULL, 'bed', '4000', '3');
+Query OK, 2 rows affected (0.002 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+MariaDB [company]> INSERT INTO `product` (`id`, `name`, `price`, `mid`) VALUES (NULL, 'laptop', '50000', '4'), (NULL, 'phone', '3000', '4');
+Query OK, 2 rows affected (0.004 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+MariaDB [company]> desc user;
++------------+-------------+------+-----+---------------------+-------------------------------+
+| Field      | Type        | Null | Key | Default             | Extra                         |
++------------+-------------+------+-----+---------------------+-------------------------------+
+| id         | int(11)     | NO   | PRI | NULL                | auto_increment                |
+| username   | varchar(20) | NO   |     | NULL                |                               |
+| password   | varchar(30) | NO   |     | NULL                |                               |
+| created_at | timestamp   | NO   |     | current_timestamp() |                               |
+| updated_at | timestamp   | NO   |     | current_timestamp() | on update current_timestamp() |
++------------+-------------+------+-----+---------------------+-------------------------------+
+5 rows in set (0.030 sec)
+
+MariaDB [company]> SELECT * FROM user;
++----+----------+----------+---------------------+---------------------+
+| id | username | password | created_at          | updated_at          |
++----+----------+----------+---------------------+---------------------+
+|  1 | shamim   | shamim   | 2026-01-18 23:05:23 | 2026-01-18 23:05:23 |
+|  2 | fahim    | fahim    | 2026-01-18 23:05:23 | 2026-01-18 23:05:23 |
++----+----------+----------+---------------------+---------------------+
+2 rows in set (0.000 sec)
+
+MariaDB [company]> desc manufacturer;
++------------+--------------+------+-----+---------------------+-------------------------------+
+| Field      | Type         | Null | Key | Default             | Extra                         |
++------------+--------------+------+-----+---------------------+-------------------------------+
+| id         | int(11)      | NO   | PRI | NULL                | auto_increment                |
+| name       | varchar(50)  | NO   |     | NULL                |                               |
+| adress     | varchar(100) | NO   |     | NULL                |                               |
+| contact    | varchar(50)  | NO   |     | NULL                |                               |
+| created_at | timestamp    | NO   |     | current_timestamp() |                               |
+| updated_at | timestamp    | NO   |     | current_timestamp() | on update current_timestamp() |
++------------+--------------+------+-----+---------------------+-------------------------------+
+6 rows in set (0.025 sec)
+
+MariaDB [company]> SELECT * FROM manufacturer;
++----+-------------+--------+-------------+---------------------+---------------------+
+| id | name        | adress | contact     | created_at          | updated_at          |
++----+-------------+--------+-------------+---------------------+---------------------+
+|  1 | bashundhara | dhaka  | 01774500817 | 2026-01-18 23:06:04 | 2026-01-18 23:06:04 |
+|  2 | meghna      | dhaka  | 01774500818 | 2026-01-18 23:06:04 | 2026-01-18 23:06:04 |
+|  3 | partex      | dhaka  | 01774500820 | 2026-01-18 23:07:16 | 2026-01-18 23:07:16 |
+|  4 | walton      | dhaka  | 01774500821 | 2026-01-18 23:07:16 | 2026-01-18 23:07:16 |
++----+-------------+--------+-------------+---------------------+---------------------+
+4 rows in set (0.000 sec)
+
+MariaDB [company]> desc product;
++------------+---------------+------+-----+---------------------+-------------------------------+
+| Field      | Type          | Null | Key | Default             | Extra                         |
++------------+---------------+------+-----+---------------------+-------------------------------+
+| id         | int(11)       | NO   | PRI | NULL                | auto_increment                |
+| name       | varchar(100)  | NO   |     | NULL                |                               |
+| price      | decimal(10,2) | NO   |     | NULL                |                               |
+| mid        | int(10)       | NO   |     | NULL                |                               |
+| created_at | timestamp     | NO   |     | current_timestamp() |                               |
+| updated_at | timestamp     | NO   |     | current_timestamp() | on update current_timestamp() |
++------------+---------------+------+-----+---------------------+-------------------------------+
+6 rows in set (0.030 sec)
+
+MariaDB [company]> SELECT * FROM product;
++----+-----------+----------+-----+---------------------+---------------------+
+| id | name      | price    | mid | created_at          | updated_at          |
++----+-----------+----------+-----+---------------------+---------------------+
+|  1 | cement    |  3000.00 |   1 | 2026-01-18 23:16:19 | 2026-01-18 23:16:19 |
+|  2 | steel     |  6000.00 |   1 | 2026-01-18 23:16:19 | 2026-01-18 23:16:19 |
+|  3 | cement    |  8000.00 |   2 | 2026-01-18 23:16:51 | 2026-01-18 23:16:51 |
+|  4 | beverages |  2000.00 |   2 | 2026-01-18 23:16:51 | 2026-01-18 23:16:51 |
+|  5 | sofa      | 50000.00 |   3 | 2026-01-18 23:17:05 | 2026-01-18 23:17:05 |
+|  6 | bed       |  4000.00 |   3 | 2026-01-18 23:17:05 | 2026-01-18 23:17:05 |
+|  7 | laptop    | 50000.00 |   4 | 2026-01-18 23:17:21 | 2026-01-18 23:17:21 |
+|  8 | phone     |  3000.00 |   4 | 2026-01-18 23:17:21 | 2026-01-18 23:17:21 |
++----+-----------+----------+-----+---------------------+---------------------+
+8 rows in set (0.001 sec)
+
+MariaDB [company]> NOTEE;

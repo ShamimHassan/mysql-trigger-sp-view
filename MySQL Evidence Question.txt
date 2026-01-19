@@ -1,0 +1,22 @@
+MYSQL Evidence Question:
+
+• Create a database named Company and do the following task:
+
+Q1.  Create a table named user: username(varchar(20)), password(varchar(30)).  
+     •	Add two or more data into the table.		   
+     •	Create a login form to take username and password and write php script to check the valid user. 
+
+Q2.  Create two tables:
+     •  Manufacturer (id (auto increment), name (varchar(50)), address (varchar(100)), contact_no (varchar(50)).
+        Product (id (auto increment), name (varchar(50)), price (INT(5)), manufacturer_id (INT(10)).
+
+     •  Add two or more data into the tables.
+        Create an after delete trigger which will delete record(s) from the product table when any corresponding 
+        manufacturer_id are deleted from the manufacturer table.  
+
+     •  Create a form to select manufacturer id and write php script to delete the record from Manufacturer table of 
+        selected manufacturer.
+ 
+Q3. Create a stored procedure to insert data into Manufacturer table. Create a form and write php script to insert data into Manufacturer table using stored procedure.
+
+Q4. Create a view to display all records from the product table where price is greater than 5000. Write php script to  display the data from the view.

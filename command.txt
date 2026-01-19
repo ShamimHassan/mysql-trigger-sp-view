@@ -1,0 +1,44 @@
+CREATE DATABASE company;
+USE company;
+
+CREATE TABLE user (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(20) NOT NULL,
+    password VARCHAR(30) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+INSERT INTO `user` (`id`, `username`, `password`) VALUES (NULL, 'shamim', 'shamim'), (NULL, 'fahim', 'fahim');
+
+CREATE TABLE manufacturer (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    address VARCHAR(100) NOT NULL,
+    contact VARCHAR(50) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+INSERT INTO `manufacturer` (`id`, `name`, `address`, `contact`) VALUES (NULL, 'bashundhara', 'dhaka', '01774500817'), (NULL, 'meghna', 'dhaka', '01774500818');
+
+INSERT INTO `manufacturer` (`id`, `name`, `address`, `contact`) VALUES (NULL, 'partex', 'dhaka', '01774500820'), (NULL, 'walton', 'dhaka', '01774500821');
+
+INSERT INTO `manufacturer` (`id`, `name`, `address`, `contact`) VALUES (NULL, 'marico', 'dhaka', '01774500815');
+
+CREATE TABLE product (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    price DECIMAL(10,2) NOT NULL,
+    mid INT(10) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+INSERT INTO `product` (`id`, `name`, `price`, `mid`) VALUES (NULL, 'cement', '3000', '1'), (NULL, 'steel', '6000', '1');
+
+INSERT INTO `product` (`id`, `name`, `price`, `mid`) VALUES (NULL, 'cement', '8000', '2'), (NULL, 'beverages', '2000', '2');
+
+INSERT INTO `product` (`id`, `name`, `price`, `mid`) VALUES (NULL, 'sofa', '50000', '3'), (NULL, 'bed', '4000', '3');
+
+INSERT INTO `product` (`id`, `name`, `price`, `mid`) VALUES (NULL, 'laptop', '50000', '4'), (NULL, 'phone', '3000', '4');
